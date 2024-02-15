@@ -15,7 +15,7 @@ local required_plugins = {
 }
 
 M.check = function()
-    health.report_start("Checking for required plugins")
+    health.start("Checking for required plugins")
     for _, plugin in ipairs(required_plugins) do
         if lualib_installed(plugin.lib) then
             health.report_ok(plugin.lib .. " installed.")
@@ -28,7 +28,7 @@ M.check = function()
             end
         end
     end
-    health.report_start("Checking for `" .. required_binary .. "` binary")
+    health.start("Checking for `" .. required_binary .. "` binary")
     if vim.fn.executable(required_binary) == 1 then
         health.report_ok("`" .. required_binary .. "` found.")
     else
